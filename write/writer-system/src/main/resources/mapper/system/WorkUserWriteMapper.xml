@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lance017.system.mapper.WorkUserWriteMapper">
+
+    <resultMap type="WorkUserWrite" id="WorkUserWriteResult">
+        <result property="id"    column="id"    />
+        <result property="userId"    column="user_id"    />
+        <result property="bookId"    column="book_id"    />
+        <result property="words"    column="words"    />
+        <result property="des"    column="des"    />
+        <result property="content"    column="content"    />
+        <result property="title"    column="title"    />
+        <result property="type"    column="type"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectWorkUserWriteVo">
+        select id, user_id, book_id, words, des, content, title, type, create_by, create_time, update_by, update_time, remark from work_user_write
+    </sql>
+
+    <select id="selectWorkUserWriteList" parameterType="WorkUserWrite" resultMap="WorkUserWriteResult">
+        <include refid="selectWorkUserWriteVo"/>
+        <where>
+            <if test="userId != null "> and user_id = #{userId}</if>
+            <if test="bookId != null "> and book_id = #{bookId}</if>
+            <if test="words != null "> and words = #{words}</if>
+            <if test="des != null  and des != ''"> and des = #{des}</if>
+            <if test="content != null  and content != ''"> and content = #{content}</if>
+            <if test="title != null  and title != ''"> and title = #{title}</if>
+            <if test="type != null "> and type = #{type}</if>
+        </where>
+    </select>
+
+
+
+
+
+
+
+
+
+
+</mapper>

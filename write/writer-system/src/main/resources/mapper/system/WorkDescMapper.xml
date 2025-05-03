@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lance017.system.mapper.WorkDescMapper">
+
+    <resultMap type="WorkDesc" id="WorkDescResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="des"    column="des"    />
+        <result property="content"    column="content"    />
+        <result property="choice"    column="choice"    />
+        <result property="useCount"    column="use_count"    />
+        <result property="boundWords"    column="bound_words"    />
+        <result property="type"    column="type"    />
+        <result property="userId"    column="user_id"    />
+        <result property="openStatus"    column="open_status"    />
+        <result property="status"    column="status"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectWorkDescVo">
+        select id, name, des, content, choice, use_count, bound_words, type, user_id, open_status, status, create_by, create_time, update_by, update_time, remark from work_desc
+    </sql>
+
+    <select id="selectWorkDescList" parameterType="WorkDesc" resultMap="WorkDescResult">
+        <include refid="selectWorkDescVo"/>
+        <where>
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="des != null  and des != ''"> and des = #{des}</if>
+            <if test="content != null  and content != ''"> and content = #{content}</if>
+            <if test="choice != null "> and choice = #{choice}</if>
+            <if test="useCount != null "> and use_count = #{useCount}</if>
+            <if test="boundWords != null "> and bound_words = #{boundWords}</if>
+            <if test="type != null "> and type = #{type}</if>
+            <if test="userId != null "> and user_id = #{userId}</if>
+            <if test="openStatus != null "> and open_status = #{openStatus}</if>
+            <if test="status != null "> and status = #{status}</if>
+        </where>
+    </select>
+
+
+
+
+
+
+
+
+
+
+</mapper>

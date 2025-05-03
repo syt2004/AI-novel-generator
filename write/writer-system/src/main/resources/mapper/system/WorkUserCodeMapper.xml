@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lance017.system.mapper.WorkUserCodeMapper">
+
+    <resultMap type="WorkUserCode" id="WorkUserCodeResult">
+        <result property="id"    column="id"    />
+        <result property="words"    column="words"    />
+        <result property="remainingWords"    column="remaining_words"    />
+        <result property="deadline"    column="deadline"    />
+        <result property="userId"    column="user_id"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectWorkUserCodeVo">
+        select id, words, remaining_words, deadline, user_id, create_by, create_time, update_by, update_time, remark from work_user_code
+    </sql>
+
+    <select id="selectWorkUserCodeList" parameterType="WorkUserCode" resultMap="WorkUserCodeResult">
+        <include refid="selectWorkUserCodeVo"/>
+        <where>
+            <if test="words != null "> and words = #{words}</if>
+            <if test="remainingWords != null "> and remaining_words = #{remainingWords}</if>
+            <if test="deadline != null "> and deadline = #{deadline}</if>
+            <if test="userId != null "> and user_id = #{userId}</if>
+        </where>
+    </select>
+
+
+
+
+
+
+
+
+
+
+</mapper>

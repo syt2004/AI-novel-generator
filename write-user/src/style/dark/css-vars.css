@@ -1,0 +1,25 @@
+/*:root {*/
+/*    --nav-bar-height: 70px;*/
+/*}*/
+
+
+
+html {
+    --book-btn-bg-color: rgb(250, 250, 252);
+    --book-title-color: #1d1e1f;
+    --el-text-color-primary: rgb(51, 54, 57);
+    --w-border-color: rgb(239, 239, 245);
+    --w-content-aside-bg-color: rgba(0, 0, 0, 0.05);
+}
+
+html.dark {
+    background-color: var(--el-bg-color);
+    --book-btn-bg-color: rgba(255, 255, 255, 0.06);
+    --book-title-color: #ffffff;
+    --el-text-color-primary: rgba(255, 255, 255, 0.82);
+    --w-border-color: rgba(255, 255, 255, 0.09);
+    --w-content-aside-bg-color: rgba(255, 255, 255, 0.05);
+}
+
+
+

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lance017.system.mapper.WorkBookPartMapper">
+
+    <resultMap type="WorkBookPart" id="WorkBookPartResult">
+        <result property="id"    column="id"    />
+        <result property="bookId"    column="book_id"    />
+        <result property="partTitle"    column="part_title"    />
+        <result property="userId"    column="user_id"    />
+        <result property="content"    column="content"    />
+        <result property="words"    column="words"    />
+        <result property="sort"    column="sort"    />
+        <result property="status"    column="status"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectWorkBookPartVo">
+        select id, book_id, part_title, user_id, content, words, sort, status, create_by, create_time, update_by, update_time, remark from work_book_part
+    </sql>
+
+    <select id="selectWorkBookPartList" parameterType="WorkBookPart" resultMap="WorkBookPartResult">
+        <include refid="selectWorkBookPartVo"/>
+        <where>
+            <if test="bookId != null "> and book_id = #{bookId}</if>
+            <if test="partTitle != null  and partTitle != ''"> and part_title = #{partTitle}</if>
+            <if test="userId != null "> and user_id = #{userId}</if>
+            <if test="content != null  and content != ''"> and content = #{content}</if>
+            <if test="words != null "> and words = #{words}</if>
+            <if test="status != null "> and status = #{status}</if>
+        </where>
+    </select>
+
+
+
+
+
+
+
+
+
+
+</mapper>

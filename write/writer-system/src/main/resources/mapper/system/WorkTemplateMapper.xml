@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lance017.system.mapper.WorkTemplateMapper">
+
+    <resultMap type="WorkTemplate" id="WorkTemplateResult">
+        <result property="id"    column="id"    />
+        <result property="bookId"    column="book_id"    />
+        <result property="userId"    column="user_id"    />
+        <result property="bg"    column="bg"    />
+        <result property="relation"    column="relation"    />
+        <result property="plotId"    column="plot_id"    />
+        <result property="plot"    column="plot"    />
+        <result property="styleId"    column="style_id"    />
+        <result property="style"    column="style"    />
+        <result property="requiresId"    column="requires_id"    />
+        <result property="requires"    column="requires"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectWorkTemplateVo">
+        select id, book_id, user_id, bg, relation, plot_id, plot, style_id, style, requires_id, requires, create_by, create_time, update_by, update_time, remark from work_template
+    </sql>
+
+    <select id="selectWorkTemplateList" parameterType="WorkTemplate" resultMap="WorkTemplateResult">
+        <include refid="selectWorkTemplateVo"/>
+        <where>
+            <if test="bookId != null "> and book_id = #{bookId}</if>
+            <if test="bg != null  and bg != ''"> and bg = #{bg}</if>
+            <if test="relation != null  and relation != ''"> and relation = #{relation}</if>
+            <if test="plotId != null "> and plot_id = #{plotId}</if>
+            <if test="plot != null  and plot != ''"> and plot = #{plot}</if>
+            <if test="styleId != null "> and style_id = #{styleId}</if>
+            <if test="style != null  and style != ''"> and style = #{style}</if>
+            <if test="requiresId != null "> and requires_id = #{requiresId}</if>
+            <if test="requires != null  and requires != ''"> and requires = #{requires}</if>
+        </where>
+    </select>
+
+
+
+
+
+
+
+
+
+
+</mapper>

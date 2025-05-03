@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lance017.system.mapper.WorkCodeMapper">
+
+    <resultMap type="WorkCode" id="WorkCodeResult">
+        <result property="id"    column="id"    />
+        <result property="code"    column="code"    />
+        <result property="words"    column="words"    />
+        <result property="type"    column="type"    />
+        <result property="status"    column="status"    />
+        <result property="userId"    column="user_id"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectWorkCodeVo">
+        select id, code, words, type, status, user_id, create_by, create_time, update_by, update_time, remark from work_code
+    </sql>
+
+    <select id="selectWorkCodeList" parameterType="WorkCode" resultMap="WorkCodeResult">
+        <include refid="selectWorkCodeVo"/>
+        <where>
+            <if test="code != null  and code != ''"> and code = #{code}</if>
+            <if test="words != null "> and words = #{words}</if>
+            <if test="type != null "> and type = #{type}</if>
+            <if test="status != null "> and status = #{status}</if>
+            <if test="userId != null "> and user_id = #{userId}</if>
+        </where>
+    </select>
+
+
+
+
+
+
+
+
+
+
+</mapper>

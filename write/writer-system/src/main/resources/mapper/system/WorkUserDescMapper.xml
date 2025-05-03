@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lance017.system.mapper.WorkUserDescMapper">
+
+    <resultMap type="WorkUserDesc" id="WorkUserDescResult">
+        <result property="id"    column="id"    />
+        <result property="descId"    column="desc_id"    />
+        <result property="userId"    column="user_id"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectWorkUserDescVo">
+        select id, desc_id, user_id, create_by, create_time, update_by, update_time, remark from work_user_desc
+    </sql>
+
+    <select id="selectWorkUserDescList" parameterType="WorkUserDesc" resultMap="WorkUserDescResult">
+        <include refid="selectWorkUserDescVo"/>
+        <where>
+            <if test="descId != null "> and desc_id = #{descId}</if>
+            <if test="userId != null "> and user_id = #{userId}</if>
+        </where>
+    </select>
+
+
+
+
+
+
+
+
+
+
+</mapper>
